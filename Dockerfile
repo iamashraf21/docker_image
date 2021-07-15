@@ -9,8 +9,8 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 USER docker
 WORKDIR /home/dokcer
 
-RUN docker apt-get install curl
+RUN apt-get install curl
 
-RUN docker python -m pip install pyserial
+RUN python -m pip install pyserial
 
 RUN python -m pip install xmlformatter
