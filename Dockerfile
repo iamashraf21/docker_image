@@ -25,4 +25,3 @@ RUN python -m pip install xmlformatter
 
 RUN arduino-cli lib install micro-ecc
 RUN arduino-cli core install Moteino:samd
-RUN sudo usermod -a -G dialout docker
