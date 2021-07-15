@@ -11,7 +11,7 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 USER docker
 WORKDIR /home/dokcer
 
-UN python -m pip install pyserial
+RUN python -m pip install pyserial
 
 RUN python -m pip install xmlformatter
 
