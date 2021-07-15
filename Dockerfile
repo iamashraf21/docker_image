@@ -2,20 +2,18 @@ FROM ubuntu:latest
 
 FROM python:3
 
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+
 RUN apt-get update && \
       apt-get -y install sudo
-
 RUN apt-get install curl
-
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 USER docker
 WORKDIR /home/dokcer
 
 RUN python -m pip install pyserial
 
 RUN python -m pip install xmlformatter
-
-RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
 RUN echo "# arduino-cli.yaml \n\
 board_manager: \n\
