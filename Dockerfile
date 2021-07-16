@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 FROM python:3
 
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+RUN useradd -ms '/bin/bash' docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 RUN apt-get update && \
       apt-get -y install sudo
@@ -15,6 +15,7 @@ board_manager: \n\
     - https://lowpowerlab.github.io/MoteinoCore/package_LowPowerLab_index.json" > arduino-cli.yaml
 
 RUN arduino-cli core update-index
+RUN sudo usermod -aG sudo docker
 RUN sudo usermod -a -G dialout docker
 
 USER docker
