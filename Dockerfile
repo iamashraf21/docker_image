@@ -5,7 +5,12 @@ FROM python:3
 RUN apt-get update && \
       apt-get -y install sudo
 RUN apt-get install curl
-RUN useradd -ms '/bin/bash' docker && echo "docker:docker" | chpasswd && adduser docker sudo
+#RUN useradd -ms '/bin/bash' docker && echo "docker:docker" | chpasswd && adduser docker sudo
+
+RUN adduser --disabled-password --gecos '' docker
+RUN adduser docker sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
 RUN echo "# arduino-cli.yaml \n\
