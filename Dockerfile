@@ -15,6 +15,7 @@ board_manager: \n\
     - https://lowpowerlab.github.io/MoteinoCore/package_LowPowerLab_index.json" > arduino-cli.yaml
 
 RUN arduino-cli core update-index
+RUN sudo usermod -a -G dialout docker
 
 USER docker
 WORKDIR /home/dokcer
