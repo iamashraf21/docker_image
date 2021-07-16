@@ -16,11 +16,10 @@ board_manager: \n\
 
 RUN arduino-cli core update-index
 
-RUN sudo usermod -a -G dialout docker
-
 USER docker
 WORKDIR /home/dokcer
-RUN usermod -aG sudo docker
+RUN sudo usermod -aG sudo docker
+RUN sudo usermod -a -G dialout docker
 RUN python -m pip install pyserial
 
 RUN python -m pip install xmlformatter
