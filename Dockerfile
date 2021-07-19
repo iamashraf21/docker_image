@@ -9,7 +9,7 @@ RUN useradd -ms '/bin/bash' docker && echo "docker:docker" | chpasswd && adduser
 
 #RUN adduser --disabled-password --gecos '' docker
 #RUN adduser docker sudo
-#RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo '%docker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
