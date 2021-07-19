@@ -22,6 +22,7 @@ WORKDIR /home/docker
 
 RUN python -m pip install pyserial
 RUN python -m pip install xmlformatter
+RUN python -m pip install ecdsa
 
 RUN arduino-cli lib install micro-ecc
 RUN arduino-cli core install Moteino:samd
