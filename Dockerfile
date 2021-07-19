@@ -20,7 +20,7 @@ board_manager: \n\
 
 RUN arduino-cli core update-index
 
-#USER docker
+USER docker
 #RUN sudo usermod -aG sudo docker
 #RUN sudo usermod -a -G dialout docker
 #RUN sudo usermod -d /home/docker docker
