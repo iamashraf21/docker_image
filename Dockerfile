@@ -9,16 +9,16 @@ RUN useradd -ms '/bin/bash' docker && echo "docker:docker" | chpasswd && adduser
 
 #RUN adduser --disabled-password --gecos '' docker
 #RUN adduser docker sudo
-RUN echo '%docker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo '%docker ALL=(ALL) ALL:ALL' >> /etc/sudoers
 
-RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+#RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
-RUN echo "# arduino-cli.yaml \n\
-board_manager: \n\
-  additional_urls: \n\
-    - https://lowpowerlab.github.io/MoteinoCore/package_LowPowerLab_index.json" > arduino-cli.yaml
+#RUN echo "# arduino-cli.yaml \n\
+#board_manager: \n\
+#  additional_urls: \n\
+#    - https://lowpowerlab.github.io/MoteinoCore/package_LowPowerLab_index.json" > arduino-cli.yaml
 
-RUN arduino-cli core update-index
+#RUN arduino-cli core update-index
 
 USER docker
 #RUN sudo usermod -aG sudo docker
