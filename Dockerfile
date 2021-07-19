@@ -24,7 +24,7 @@ RUN arduino-cli core update-index
 #RUN sudo usermod -aG sudo docker
 #RUN sudo usermod -a -G dialout docker
 #RUN sudo usermod -d /home/docker docker
-RUN mkdir /home/docker
+
 RUN chown -R docker /home/docker
 WORKDIR /home/docker
 RUN python -m pip install pyserial
