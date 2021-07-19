@@ -19,11 +19,11 @@ board_manager: \n\
     - https://lowpowerlab.github.io/MoteinoCore/package_LowPowerLab_index.json" > arduino-cli.yaml
 
 RUN arduino-cli core update-index
+RUN usermod -a -G dialout docker
 USER docker
 RUN chown -R docker /home/docker
 WORKDIR /home/docker
 #RUN sudo usermod -aG sudo docker
-RUN usermod -a -G dialout docker
 #RUN sudo usermod -d /home/docker docker
 
 RUN python -m pip install pyserial
