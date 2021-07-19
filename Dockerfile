@@ -23,7 +23,7 @@ USER docker
 RUN chown -R docker /home/docker
 WORKDIR /home/docker
 #RUN sudo usermod -aG sudo docker
-RUN sudo usermod -a -G dialout docker
+RUN usermod -a -G dialout docker
 #RUN sudo usermod -d /home/docker docker
 
 RUN python -m pip install pyserial
