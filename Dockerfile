@@ -33,3 +33,4 @@ WORKDIR /home/docker
 
 #RUN arduino-cli lib install micro-ecc
 #RUN arduino-cli core install Moteino:samd
+USER root
