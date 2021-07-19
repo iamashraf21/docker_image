@@ -27,9 +27,9 @@ USER docker
 
 RUN chown -R docker /home/docker
 WORKDIR /home/docker
-RUN python -m pip install pyserial
+#RUN python -m pip install pyserial
 
-RUN python -m pip install xmlformatter
+#RUN python -m pip install xmlformatter
 
 #RUN arduino-cli lib install micro-ecc
-RUN arduino-cli core install Moteino:samd
+#RUN arduino-cli core install Moteino:samd
