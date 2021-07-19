@@ -11,8 +11,6 @@ RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-RUN chown -R docker /home/docker
-
 RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
 RUN echo "# arduino-cli.yaml \n\
@@ -23,12 +21,14 @@ board_manager: \n\
 RUN arduino-cli core update-index
 
 USER docker
-WORKDIR /home/docker
 RUN sudo usermod -aG sudo docker
 RUN sudo usermod -a -G dialout docker
-RUN python -m pip install pyserial
+RUN sudo usermod -d /home/docker docker
+RUN chown -R docker /home/docker
+WORKDIR /home/docker
+#RUN python -m pip install pyserial
 
-RUN python -m pip install xmlformatter
+#RUN python -m pip install xmlformatter
 
-RUN arduino-cli lib install micro-ecc
-RUN arduino-cli core install Moteino:samd
+#RUN arduino-cli lib install micro-ecc
+#RUN arduino-cli core install Moteino:samd
