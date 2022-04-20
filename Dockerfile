@@ -7,7 +7,7 @@ RUN apt-get update && \
 RUN apt-get install curl
 RUN useradd -ms '/bin/bash' docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
-RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh -s 0.20.1
 
 RUN echo "# arduino-cli.yaml \n\
 board_manager: \n\
@@ -15,6 +15,7 @@ board_manager: \n\
     - https://lowpowerlab.github.io/MoteinoCore/package_LowPowerLab_index.json" > arduino-cli.yaml
 
 RUN arduino-cli core update-index
+
 RUN usermod -a -G dialout docker
 USER docker
 RUN chown -R docker /home/docker
@@ -23,7 +24,5 @@ WORKDIR /home/docker
 RUN python -m pip install pyserial
 RUN python -m pip install xmlformatter
 RUN python -m pip install ecdsa
-
-RUN arduino-cli core install Moteino:samd
 
 USER root
